@@ -7,11 +7,12 @@ utilizar pandas, numpy o scipy.
 
 
 def pregunta_12():
-    """
-    Genere un diccionario que contengan como clave la columna 1 y como valor
-    la suma de los valores de la columna 5 sobre todo el archivo.
+    sums = {}
+    with open("files/input/data.csv", "r") as f:
+        for line in f:
+            p = line.split("\t")
+            total = sum(int(x.split(":")[1]) for x in p[4].split(","))
+            sums[p[0]] = sums.get(p[0], 0) + total
+    return sums
 
-    Rta/
-    {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
-    """
